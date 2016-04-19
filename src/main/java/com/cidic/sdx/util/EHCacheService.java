@@ -5,35 +5,34 @@ import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
 public class EHCacheService {
-	private static final CacheManager cacheManager = new CacheManager();
-	private Cache cache;
 
-	public EHCacheService() {
-		this.cache = cacheManager.getCache("ehcacheName");
+	private static CacheManager cacheManager;
+	private static Cache cache;
+	
+	private EHCacheService() {
 	}
 
-	public Cache getCache() {
-		return cache;
+	private static EHCacheService service = null;
+
+	// ��̬��������
+	public static EHCacheService getInstance() {
+		if (service == null) {
+			cacheManager = new CacheManager();
+			cacheManager.addCache("StyleImage");
+			cache = cacheManager.getCache("StyleImage");
+			service = new EHCacheService();
+		}
+		return service;
 	}
 
-	public void setCache(Cache cache) {
-		this.cache = cache;
-	}
-
-	/*
-	 * 通过名称从缓存中获取数据
-	 */
 	public Object getCacheElement(String cacheKey) throws Exception {
-		net.sf.ehcache.Element e = cache.get(cacheKey);
+		Element e = cache.get(cacheKey);
 		if (e == null) {
 			return null;
 		}
 		return e.getValue();
 	}
 
-	/*
-	 * 将对象添加到缓存中
-	 */
 	public void addToCache(String cacheKey, Object result) throws Exception {
 		Element element = new Element(cacheKey, result);
 		cache.put(element);
