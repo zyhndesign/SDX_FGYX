@@ -28,7 +28,7 @@
                 <h1 class="panel-title">服装管理</h1>
             </div>
             <div class="panel-body" id="opt-body">
-                <a class="btn btn-success" href="style/insert">
+                <a class="btn btn-success" href="style/clothCOR">
                     <span class="glyphicon glyphicon-plus"></span> 新建
                 </a>
                 <!--<div class="input-group tableSearchContainer col-md-6">
