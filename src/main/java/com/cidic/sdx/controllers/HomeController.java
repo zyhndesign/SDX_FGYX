@@ -44,16 +44,8 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
 	}
@@ -68,7 +60,7 @@ public class HomeController {
 
 		ModelAndView view = new ModelAndView();
 		
-		if (!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password) && username.equals("admin") && password.equals("cidic")) {
+		if (!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password) && username.equals("admin") && password.equals("cidiccidic")) {
 			
 			//HttpSession session = request.getSession();
 			//session.setAttribute(MemberInterceptor.SEESION_MEMBER, username);

@@ -1,5 +1,6 @@
 package com.cidic.sdx.controllers;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -56,10 +57,10 @@ public class StyleController {
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)  
 	@ResponseBody
-	public ResultModel insert(@RequestParam String image_url,@RequestParam String createTime){
+	public ResultModel insert(@RequestParam String image_url,@RequestParam(required=false) String createTime){
 		Style style = new Style();
 		style.setImageUrl(image_url);
-		
+		style.setCreateTime(new Date());
 		try{
 			styleServiceImpl.insertStyle(style);
 			resultModel = new ResultModel();
@@ -90,11 +91,11 @@ public class StyleController {
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)  
 	@ResponseBody
-	public ResultModel update(@RequestParam int id,@RequestParam String image_url,@RequestParam String createTime){
+	public ResultModel update(@RequestParam int id,@RequestParam String image_url,@RequestParam(required=false) String createTime){
 		Style style = new Style();
 		style.setId(id);
 		style.setImageUrl(image_url);
-		style.setCreateTime(DateUtil.stringToDate(createTime));
+		style.setCreateTime(new Date());
 		
 		try{
 			styleServiceImpl.updateStyle(style);
