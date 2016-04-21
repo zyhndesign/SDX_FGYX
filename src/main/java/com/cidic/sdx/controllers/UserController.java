@@ -1,9 +1,13 @@
 package com.cidic.sdx.controllers;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.jgroups.util.UUID;
 import org.slf4j.Logger;
@@ -52,16 +56,29 @@ public class UserController {
 		return "userMgr";
 	}
 	
-	@RequestMapping(value = "/showUserChoose", method = RequestMethod.GET)
-	public String showUserChoose(Locale locale, Model model) {
+	@RequestMapping(value = "/showUserChoose/{userId}", method = RequestMethod.GET)
+	public String showUserChoose(Locale locale, Model model,@PathVariable String userId) {
+		List<Style> list;
+		try {
+			list = userServiceImpl.getStyleListByUser(userId);
+			model.addAttribute("list", list );
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		}
 		return "showUserChoose";
 	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)  
 	@ResponseBody
-	public ResultModel insert(@RequestParam String userId,@RequestParam String styleIds){
+	public ResultModel insert(HttpServletRequest request,HttpServletResponse response,@RequestParam String userId,@RequestParam String styleIds){
 		
-		
+		response.setContentType("text/html;charset=UTF-8");
+		response.addHeader("Access-Control-Allow-Origin","*");
+	    if("IE".equals(request.getParameter("type"))){
+	    	response.addHeader("XDomainRequestAllowed","1");
+	    }
+	    
 		try{
 			User user = new User();
 			user.setUserId(userId);
