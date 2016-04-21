@@ -80,7 +80,7 @@ public class HomeController {
 			
 		final String ACCESS_KEY = "Q-DeiayZfPqA0WDSOGSf-ekk345VrzuZa_6oBrX_";
 		final String SECRET_KEY = "fIiGiRr3pFmHOmBDR2Md1hTCqpMMBcE_gvZYMzwD";
-		final String bucketname = "design-course";
+		final String bucketname = "sdx-fgyi";
 		try{
 			StringMap strMap = new StringMap().putNotNull("returnBody", "{\"key\": $(key), \"hash\": $(etag), \"w\": $(imageInfo.width), \"h\": $(imageInfo.height)}");
 			Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
