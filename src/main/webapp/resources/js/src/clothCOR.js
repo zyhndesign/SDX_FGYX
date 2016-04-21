@@ -28,12 +28,12 @@ $(document).ready(function(){
     $("#myForm").validate({
         ignore:[],
         rules:{
-            thumbnail:{
+            image_url:{
                 required:true
             }
         },
         messages:{
-            thumbnail:{
+            image_url:{
                 required:config.validErrors.required
             }
         },
