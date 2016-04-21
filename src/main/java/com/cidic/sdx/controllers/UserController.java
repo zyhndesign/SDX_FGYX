@@ -3,6 +3,7 @@ package com.cidic.sdx.controllers;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.jgroups.util.UUID;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +45,16 @@ public class UserController {
 		resultModel.setResultCode(ex.getErrCode());
 		resultModel.setMessage(ex.getErrMsg());
 		return resultModel;
+	}
+	
+	@RequestMapping(value = "/userMgr", method = RequestMethod.GET)
+	public String userMgr(Locale locale, Model model) {
+		return "userMgr";
+	}
+	
+	@RequestMapping(value = "/showUserChoose", method = RequestMethod.GET)
+	public String showUserChoose(Locale locale, Model model) {
+		return "showUserChoose";
 	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)  

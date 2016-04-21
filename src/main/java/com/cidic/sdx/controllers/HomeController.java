@@ -1,19 +1,22 @@
-package com.cidic.sdx;
+package com.cidic.sdx.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.sdx.exception.SdxException;
 import com.cidic.sdx.model.ResultModel;
@@ -53,6 +56,30 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Locale locale, Model model) {
+		return "login";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView submit(String username, String password, HttpServletRequest request) {
+
+		ModelAndView view = new ModelAndView();
+		
+		if (!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password) && username.equals("admin") && password.equals("cidic")) {
+			
+			//HttpSession session = request.getSession();
+			//session.setAttribute(MemberInterceptor.SEESION_MEMBER, username);
+
+			view.setViewName("redirect:/home");
+		} else {
+
+			view.setViewName("/login");
+			view.addObject("error", "”√ªß√˚√‹¬Î¥ÌŒÛ");
+		}
+		return view;
 	}
 	
 	@RequestMapping(value = "/getUploadKey", method = RequestMethod.GET)

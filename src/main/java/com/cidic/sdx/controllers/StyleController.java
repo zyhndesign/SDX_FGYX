@@ -1,12 +1,14 @@
 package com.cidic.sdx.controllers;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +42,17 @@ public class StyleController {
 		resultModel.setMessage(ex.getErrMsg());
 		return resultModel;
 	}
+	
+	@RequestMapping(value = "/clothCOR", method = RequestMethod.GET)
+	public String clothCOR(Locale locale, Model model) {
+		return "clothCOR";
+	}
+	
+	@RequestMapping(value = "/clothMgr", method = RequestMethod.GET)
+	public String clothMgr(Locale locale, Model model) {
+		return "clothMgr";
+	}
+	
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)  
 	@ResponseBody
