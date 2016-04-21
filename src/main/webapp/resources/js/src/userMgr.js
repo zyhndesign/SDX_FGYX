@@ -23,7 +23,7 @@ var userMgr=(function(config,functions){
                 { "mDataProp": "userId"},
                 { "mDataProp": "opt",
                     "fnRender":function(oObj){
-                        return '<a target="_blank" href="showUserChoose.html?id='+oObj.aData.userId+'">查看选择</a>&nbsp;';
+                        return '<a target="_blank" href="user/showUserChoose/'+oObj.aData.userId+'">查看选择</a>&nbsp;';
                     }
                 }
             ] ,
