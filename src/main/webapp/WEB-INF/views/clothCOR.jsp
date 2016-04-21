@@ -35,7 +35,7 @@
                             <a href="#" class="btn btn-success" id="uploadBtn">上传</a>
                             <p class="help-block">请上传500x500的jpg，png</p>
                             <img  id="image"  style="width:100px"
-                                  src="images/app/defaultPeopleImage.jpg"/>
+                                  src="resources/images/app/defaultPeopleImage.jpg"/>
                             <input type="hidden" id="imageUrl" name="image_url">
                         </div>
                     </div>
