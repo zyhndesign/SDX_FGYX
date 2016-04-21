@@ -8,9 +8,9 @@
 var config={
     baseUrl:"",
     qiNiu:{
-    	upTokenUrl:"qi-niu/up-token",
+    	upTokenUrl:"getUploadKey",
         uploadDomain:"http://qiniu-plupload.qiniudn.com/",
-        bucketDomain:"http://7xqx6h.com1.z0.glb.clouddn.com/",
+        bucketDomain:"http://7xsxre.com1.z0.glb.clouddn.com/",
         swfUrl:"resources/js/lib/Moxie.swf"
     },
     ajaxUrls:{
