@@ -26,9 +26,9 @@
                 <h1 class="panel-title">用户选择</h1>
             </div>
             <div class="panel-body" id="opt-body">
-                <img src="data/images/1.jpg">
-                <img src="data/images/2.jpg">
-                <img src="data/images/1.jpg">
+                <c:forEach items="${list}" var="l">
+                    <img src="${l.imageUrl}">
+                </c:forEach>
             </div>
         </div>
     </article>
