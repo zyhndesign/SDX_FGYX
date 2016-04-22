@@ -20,7 +20,7 @@ var clothMgr=(function(config,functions){
                 "sUrl":config.dataTable.langUrl
             },
             "aoColumns": [
-                { "mDataProp": " imageUrl",
+                { "mDataProp": "imageUrl",
                     "fnRender":function(oObj){
                         return '<img class="thumb" src="'+oObj.aData.imageUrl+'">';
                     }},
