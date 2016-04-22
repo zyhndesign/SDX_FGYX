@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,7 +114,12 @@ public class StyleController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)  
 	@ResponseBody
-	public ResultModel listStyleData(@RequestParam int pageNum,@RequestParam String userId){
+	public ResultModel listStyleData(HttpServletRequest request,HttpServletResponse response,@RequestParam int pageNum,@RequestParam String userId){
+		response.setContentType("text/html;charset=UTF-8");
+		response.addHeader("Access-Control-Allow-Origin","*");
+	    if("IE".equals(request.getParameter("type"))){
+	    	response.addHeader("XDomainRequestAllowed","1");
+	    }
 		try{
 			List<Style> listStyle = styleServiceImpl.listStyleByUser(userId, pageNum);
 			resultModel = new ResultModel();

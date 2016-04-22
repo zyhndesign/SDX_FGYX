@@ -1,5 +1,6 @@
 package com.cidic.sdx;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +27,7 @@ public class UserTest {
     private UserService userServiceImpl; 
 	
 	@Test
-	public void insertTest(){
+	public void insertTest() throws SQLException{
 		
 		User user = new User();
 		user.setUserId(UUID.randomUUID().toString());

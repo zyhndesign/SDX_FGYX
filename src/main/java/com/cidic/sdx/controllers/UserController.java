@@ -1,5 +1,6 @@
 package com.cidic.sdx.controllers;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -102,8 +103,14 @@ public class UserController {
 			resultModel = new ResultModel();
 			resultModel.setResultCode(200);
 		}
+		
 		catch(Exception e){
-			throw new SdxException(500, "写入数据出错");
+			if (e.getMessage().equals("could not execute statement")){
+				throw new SdxException(500, "该用户已经调研");
+			}
+			else{
+				throw new SdxException(500, "写入数据出错");
+			}
 		}
 		return resultModel;
 	}

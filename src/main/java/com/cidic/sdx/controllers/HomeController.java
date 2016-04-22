@@ -55,6 +55,12 @@ public class HomeController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(Locale locale, Model model) {
+		
+		return "index";
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView submit(String username, String password, HttpServletRequest request) {
 

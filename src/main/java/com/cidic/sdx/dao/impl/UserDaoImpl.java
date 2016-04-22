@@ -1,5 +1,6 @@
 package com.cidic.sdx.dao.impl;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public void insertUser(User user) {
+	public void insertUser(User user){
 		Session session = this.getSessionFactory().getCurrentSession();
 		session.save(user);
 	}
@@ -76,7 +77,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<Style> getStyleListByUser(String userId) throws ParseException{
 		Session session = this.getSessionFactory().getCurrentSession();
-		final String sql = "select s.id, s.image_url, s.create_time from user_style u style s where u.user_id=:user_id and u.style_id = s.id";
+		final String sql = "select s.id, s.image_url, s.create_time from user_style u, style s where u.user_id=:user_id and u.style_id = s.id";
 		final Query query = session.createSQLQuery(sql);
 		query.setParameter("user_id", userId);
 		List<Object[]> styles = query.list();

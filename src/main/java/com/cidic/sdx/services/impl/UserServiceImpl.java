@@ -1,5 +1,6 @@
 package com.cidic.sdx.services.impl;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDaoImpl;
 	
 	@Override
-	public void insertUser(User user) {
+	public void insertUser(User user){
 		userDaoImpl.insertUser(user);
 	}
 
