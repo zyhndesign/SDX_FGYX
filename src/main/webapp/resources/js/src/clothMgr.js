@@ -20,9 +20,9 @@ var clothMgr=(function(config,functions){
                 "sUrl":config.dataTable.langUrl
             },
             "aoColumns": [
-                { "mDataProp": "thumbnail",
+                { "mDataProp": " imageUrl",
                     "fnRender":function(oObj){
-                        return '<img class="thumb" src="'+oObj.aData.thumbnail+'">';
+                        return '<img class="thumb" src="'+oObj.aData. imageUrl+'">';
                     }},
                 { "mDataProp": "opt",
                     "fnRender":function(oObj){
@@ -87,7 +87,7 @@ var clothMgr=(function(config,functions){
             var me=this;
             $.ajax({
                 url:config.ajaxUrls.clothDelete.replace(":id",id),
-                type:"delete",
+                type:"post",
                 dataType:"json",
                 success:function(response){
                     if(response.resultCode==200){

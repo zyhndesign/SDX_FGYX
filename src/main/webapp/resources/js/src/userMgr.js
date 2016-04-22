@@ -95,28 +95,6 @@ var userMgr=(function(config,functions){
                     functions.ajaxErrorHandler();
                 }
             });
-        },
-        delete:function(id){
-            functions.showLoading();
-            var me=this;
-            $.ajax({
-                url:config.ajaxUrls.userDelete.replace(":id",id),
-                type:"delete",
-                dataType:"json",
-                success:function(response){
-                    if(response.resultCode==200){
-                        $().toastmessage("showSuccessToast",config.messages.optSuccess);
-                        me.ownTable.fnDraw();
-                        functions.hideLoading();
-                    }else{
-                        functions.ajaxReturnErrorHandler(response.message);
-                    }
-
-                },
-                error:function(){
-                    functions.ajaxErrorHandler();
-                }
-            });
         }
     }
 })(config,functions);
@@ -126,12 +104,6 @@ $(document).ready(function(){
     userMgr.createTable();
     $("#searchBtn").click(function(e){
         userMgr.tableRedraw();
-    });
-    $("#myTable").on("click","a.delete",function(){
-        if(confirm(config.messages.confirmDelete)){
-            userMgr.delete($(this).attr("href"));
-        }
-        return false;
     });
     /*$("#myForm").validate({
         ignore:[],
