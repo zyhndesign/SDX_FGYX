@@ -9,7 +9,7 @@ var clothCOR=(function(config,functions){
                     if(response.resultCode==200){
                         $().toastmessage("showSuccessToast",config.messages.optSuccess);
                         setTimeout(function(){
-                            window.location.href="course/mgr";
+                            window.location.href="style/clothMgr";
                         },3000);
                     }else{
                         functions.ajaxReturnErrorHandler(response.message);
@@ -24,6 +24,28 @@ var clothCOR=(function(config,functions){
 })(config,functions);
 
 $(document).ready(function(){
+    functions.createQiNiuUploader({
+        maxSize:config.uploader.sizes.img,
+        filter:config.uploader.filters.img,
+        uploadBtn:"uploadBtn",
+        multiSelection:false,
+        multipartParams:null,
+        uploadContainer:"uploadContainer",
+        fileAddCb:null,
+        progressCb:null,
+        uploadedCb:function(info,file,up){
+            //后台的up-token里面要注明返回图片信息
+            if(info.w==500&&info.h==500){
+                $("#imageUrl").val(info.url);
+
+                $("#image").attr("src",info.url);
+
+                $(".error[for='imageUrl']").remove();
+            }else{
+                $().toastmessage("showErrorToast",config.messages.imageSizeError);
+            }
+        }
+    });
 
     $("#myForm").validate({
         ignore:[],
