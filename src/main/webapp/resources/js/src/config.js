@@ -16,7 +16,7 @@ var config={
     ajaxUrls:{
         userGetAll:"user/list",
         userDelete:"user/delete/:id",
-        clothGetAll:"style/list",
+        clothGetAll:"style/listStyle",
         clothDelete:"style/delete/:id"
     },
     dataTable:{
