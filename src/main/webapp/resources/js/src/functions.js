@@ -269,6 +269,9 @@ var functions=(function(config){
          */
         ajaxReturnErrorHandler:function(message){
             this.hideLoading();
+            if(!message){
+                message=config.messages.loadDataError;
+            }
             $().toastmessage("showErrorToast",message);
         },
         /**
