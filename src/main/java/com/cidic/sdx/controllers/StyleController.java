@@ -56,7 +56,6 @@ public class StyleController {
 		return "clothMgr";
 	}
 	
-	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)  
 	@ResponseBody
 	public ResultModel insert(@RequestParam String image_url,@RequestParam(required=false) String createTime){
