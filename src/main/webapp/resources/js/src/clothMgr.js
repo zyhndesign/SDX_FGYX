@@ -22,7 +22,7 @@ var clothMgr=(function(config,functions){
             "aoColumns": [
                 { "mDataProp": " imageUrl",
                     "fnRender":function(oObj){
-                        return '<img class="thumb" src="'+oObj.aData. imageUrl+'">';
+                        return '<img class="thumb" src="'+oObj.aData.imageUrl+'">';
                     }},
                 { "mDataProp": "opt",
                     "fnRender":function(oObj){
