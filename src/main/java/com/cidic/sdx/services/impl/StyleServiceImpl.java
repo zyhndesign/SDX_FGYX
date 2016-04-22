@@ -87,4 +87,10 @@ public class StyleServiceImpl implements StyleService {
 		return null;
 	}
 
+	@Override
+	public List<Style> getDataByPage(int limit, int offset, String sEcho) {
+		// TODO Auto-generated method stub
+		return styleDaoImpl.getDataByPage(limit, offset, sEcho);
+	}
+
 }

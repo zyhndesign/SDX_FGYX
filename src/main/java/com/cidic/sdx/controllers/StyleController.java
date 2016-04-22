@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cidic.sdx.util.DateUtil;
 import com.cidic.sdx.exception.SdxException;
+import com.cidic.sdx.model.ListResultModel;
 import com.cidic.sdx.model.ResultModel;
 import com.cidic.sdx.model.Style;
+import com.cidic.sdx.model.User;
 import com.cidic.sdx.services.StyleService;
 
 
@@ -122,4 +124,22 @@ public class StyleController {
 		}
 		return resultModel;
 	} 
+	
+	@RequestMapping(value = "/listStyle", method = RequestMethod.GET, produces="application/json")  
+	@ResponseBody
+	public ListResultModel listUser(@RequestParam int iDisplayLength, @RequestParam int iDisplayStart,@RequestParam String sEcho){
+		ListResultModel listResultModel = new ListResultModel();
+		try{
+			List<Style> list = styleServiceImpl.getDataByPage(iDisplayLength, iDisplayStart, sEcho);
+			listResultModel.setAaData(list);
+			listResultModel.setsEcho(sEcho);
+			listResultModel.setiTotalRecords(list.size());
+			listResultModel.setiTotalDisplayRecords(iDisplayStart + list.size());
+			listResultModel.setSuccess(true);
+		}
+		catch(Exception e){
+			listResultModel.setSuccess(false);
+		}
+		return listResultModel;
+	}
 }

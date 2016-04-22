@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.cidic.sdx.dao.StyleDao;
 import com.cidic.sdx.model.Style;
+import com.cidic.sdx.model.User;
 
 @Repository
 @Component
@@ -63,6 +64,17 @@ public class StyleDaoImpl implements StyleDao {
 		Session session = this.getSessionFactory().getCurrentSession();
 		Query query = session.createQuery("from Style");
 		List<Style> list = query.list();
+		return list;
+	}
+
+	@Override
+	public List<Style> getDataByPage(int limit, int offset, String sEcho) {
+		Session session = this.getSessionFactory().getCurrentSession();
+		final String hql = " from Style order by createTime desc"; 
+        final Query query = session.createQuery(hql);   
+        query.setFirstResult(offset);    
+        query.setMaxResults(limit); 
+        final List<Style> list = query.list();  
 		return list;
 	}
 

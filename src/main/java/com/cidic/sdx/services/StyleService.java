@@ -15,4 +15,6 @@ public interface StyleService {
 	public void deleteStyle(Style style);
 	
 	public List<Style> listStyleByUser(String userId,int pageNum);
+	
+	public List<Style> getDataByPage(int limit, int offset, String sEcho);
 }
