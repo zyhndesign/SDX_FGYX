@@ -103,7 +103,7 @@ public class UserController {
 			resultModel.setResultCode(200);
 		}
 		catch(Exception e){
-			throw new SdxException(500, "写入数据出错");
+			throw new SdxException(500, "鍐欏叆鏁版嵁鍑洪敊");
 		}
 		return resultModel;
 	}
@@ -137,7 +137,7 @@ public class UserController {
 			resultModel.setObject(list);
 		}
 		catch(Exception e){
-			throw new SdxException(500, "写入数据出错");
+			throw new SdxException(500, "鍐欏叆璇︽儏鏁版嵁鍑洪敊");
 		}
 		return resultModel;
 	}

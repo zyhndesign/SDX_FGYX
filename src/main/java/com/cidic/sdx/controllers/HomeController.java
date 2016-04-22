@@ -69,7 +69,7 @@ public class HomeController {
 		} else {
 
 			view.setViewName("/login");
-			view.addObject("error", "ÓÃ»§ÃûÃÜÂë´íÎó");
+			view.addObject("error", "ç”¨æˆ·åæˆ–è€…å¯†ç é”™è¯¯");
 		}
 		return view;
 	}
@@ -92,7 +92,7 @@ public class HomeController {
 			resultModel.setUptoken(token);
 		}
 		catch(Exception e){
-			throw new SdxException(500, "»ñÈ¡Êı¾İÊ§°Ü£¡");
+			throw new SdxException(500, "è·å–Tokenå‡ºé”™");
 		}
 		
 		return resultModel;

@@ -67,7 +67,7 @@ public class StyleController {
 			resultModel.setResultCode(200);
 		}
 		catch(Exception e){
-			throw new SdxException(500, "写入数据出错");
+			throw new SdxException(500, "鍐欏叆鏁版嵁鍑洪敊");
 		}
 		return resultModel;
 	}
@@ -84,7 +84,7 @@ public class StyleController {
 			resultModel.setResultCode(200);
 		}
 		catch(Exception e){
-			throw new SdxException(500, "写入数据出错");
+			throw new SdxException(500, "鍒犻櫎鏁版嵁鍑洪敊");
 		}
 		return resultModel;
 	}
@@ -103,12 +103,12 @@ public class StyleController {
 			resultModel.setResultCode(200);
 		}
 		catch(Exception e){
-			throw new SdxException(500, "写入数据出错");
+			throw new SdxException(500, "鏇存柊鏁版嵁鍑洪敊");
 		}
 		return resultModel;
 	}
 	
-	@RequestMapping(value = "/list", method = RequestMethod.POST)  
+	@RequestMapping(value = "/list", method = RequestMethod.GET)  
 	@ResponseBody
 	public ResultModel listStyleData(@RequestParam int pageNum,@RequestParam String userId){
 		try{
@@ -118,7 +118,7 @@ public class StyleController {
 			resultModel.setObject(listStyle);
 		}
 		catch(Exception e){
-			throw new SdxException(500, "写入数据出错");
+			throw new SdxException(500, "鑾峰彇鏁版嵁鍒楄〃鍑洪敊");
 		}
 		return resultModel;
 	} 
