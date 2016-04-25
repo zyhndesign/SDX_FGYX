@@ -68,6 +68,7 @@ public class StyleServiceImpl implements StyleService {
 			}
 			
 			if (tempList.size() <= pageNum){
+				service.removeFromCache(userId);
 				return tempList;
 			}
 			else{

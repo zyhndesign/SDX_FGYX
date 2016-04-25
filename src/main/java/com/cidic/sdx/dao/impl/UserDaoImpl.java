@@ -70,7 +70,7 @@ public class UserDaoImpl implements UserDao {
         final Query query = session.createQuery(hql);   
         query.setFirstResult(offset);    
         query.setMaxResults(limit); 
-        final List<User> list = query.list();  
+        final List<User> list = query.list(); 
 		return list;
 	}
 

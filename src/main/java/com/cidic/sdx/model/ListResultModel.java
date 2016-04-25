@@ -2,6 +2,8 @@ package com.cidic.sdx.model;
 
 import java.util.List;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 public class ListResultModel {
 	
 	private boolean success;

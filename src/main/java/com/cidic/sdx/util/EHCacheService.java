@@ -14,7 +14,6 @@ public class EHCacheService {
 
 	private static EHCacheService service = null;
 
-	// 静态工厂方法
 	public static EHCacheService getInstance() {
 		if (service == null) {
 			cacheManager = new CacheManager();
@@ -38,4 +37,7 @@ public class EHCacheService {
 		cache.put(element);
 	}
 
+	public void removeFromCache(String cacheKey) throws Exception {
+		cache.remove(cacheKey);
+	}
 }

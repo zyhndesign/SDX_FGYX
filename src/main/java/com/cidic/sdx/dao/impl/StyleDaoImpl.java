@@ -74,7 +74,7 @@ public class StyleDaoImpl implements StyleDao {
         final Query query = session.createQuery(hql);   
         query.setFirstResult(offset);    
         query.setMaxResults(limit); 
-        final List<Style> list = query.list();  
+        final List<Style> list = query.list();
 		return list;
 	}
 
