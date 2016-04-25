@@ -25,6 +25,7 @@ import com.cidic.sdx.exception.SdxException;
 import com.cidic.sdx.model.ListResultModel;
 import com.cidic.sdx.model.ResultModel;
 import com.cidic.sdx.model.Style;
+import com.cidic.sdx.model.StylePageModel;
 import com.cidic.sdx.model.User;
 import com.cidic.sdx.services.StyleService;
 
@@ -137,11 +138,12 @@ public class StyleController {
 	public ListResultModel listUser(@RequestParam int iDisplayLength, @RequestParam int iDisplayStart,@RequestParam String sEcho){
 		ListResultModel listResultModel = new ListResultModel();
 		try{
-			List<Style> list = styleServiceImpl.getDataByPage(iDisplayLength, iDisplayStart, sEcho);
+			StylePageModel stylePageModel = styleServiceImpl.getDataByPage(iDisplayLength, iDisplayStart, sEcho);
+			List<Style> list = stylePageModel.getList();
 			listResultModel.setAaData(list);
 			listResultModel.setsEcho(sEcho);
-			listResultModel.setiTotalRecords(list.size());
-			listResultModel.setiTotalDisplayRecords(iDisplayStart + list.size());
+			listResultModel.setiTotalRecords(stylePageModel.getCount());
+			listResultModel.setiTotalDisplayRecords(stylePageModel.getCount());
 			listResultModel.setSuccess(true);
 		}
 		catch(Exception e){

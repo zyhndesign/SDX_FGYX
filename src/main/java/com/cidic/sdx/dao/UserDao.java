@@ -19,4 +19,6 @@ public interface UserDao {
 	public List<User> getDataByPage(int limit, int offset, String sEcho);
 	
 	public List<Style> getStyleListByUser(String userId) throws ParseException;
+	
+	public int getDataCount();
 }

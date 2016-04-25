@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.sdx.dao.StyleDao;
 import com.cidic.sdx.model.Style;
+import com.cidic.sdx.model.StylePageModel;
+import com.cidic.sdx.model.User;
+import com.cidic.sdx.model.UserPageModel;
 import com.cidic.sdx.services.StyleService;
 import com.cidic.sdx.util.EHCacheService;
 import com.cidic.sdx.util.RandomUtil;
@@ -71,13 +74,16 @@ public class StyleServiceImpl implements StyleService {
 				List<Integer> indexData = RandomUtil.getIntegerRangeByRandom(tempList.size(), pageNum);
 				List<Style> list = new ArrayList<Style>();
 				for (Integer i : indexData){
-					list.add(tempList.get(i));
+					Style style = tempList.get(i);
+					list.add(style);
 				}
-				for (Integer i : indexData){
-					tempList.remove(i);
+				
+				for (Style style : list){
+					tempList.remove(style);
 				}
+				
 				service.addToCache(userId,tempList);
-				return tempList;
+				return list;
 			}
 			
 		} catch (Exception e) {
@@ -88,9 +94,14 @@ public class StyleServiceImpl implements StyleService {
 	}
 
 	@Override
-	public List<Style> getDataByPage(int limit, int offset, String sEcho) {
-		// TODO Auto-generated method stub
-		return styleDaoImpl.getDataByPage(limit, offset, sEcho);
+	@Transactional(readOnly = false, rollbackFor = Exception.class)
+	public StylePageModel getDataByPage(int limit, int offset, String sEcho) {
+		StylePageModel stylePageModel = new StylePageModel();
+		List<Style> list = styleDaoImpl.getDataByPage(limit, offset, sEcho);
+		int count = styleDaoImpl.getDataCount();
+		stylePageModel.setList(list);
+		stylePageModel.setCount(count);
+		return stylePageModel;
 	}
 
 }

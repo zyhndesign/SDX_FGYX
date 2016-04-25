@@ -17,4 +17,6 @@ public interface StyleDao {
 	public List<Style> listAllStyle();
 	
 	public List<Style> getDataByPage(int limit, int offset, String sEcho);
+	
+	public int getDataCount();
 }

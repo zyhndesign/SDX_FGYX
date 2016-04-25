@@ -29,6 +29,7 @@ import com.cidic.sdx.model.ListResultModel;
 import com.cidic.sdx.model.ResultModel;
 import com.cidic.sdx.model.Style;
 import com.cidic.sdx.model.User;
+import com.cidic.sdx.model.UserPageModel;
 import com.cidic.sdx.model.UserStyle;
 import com.cidic.sdx.services.UserService;
 
@@ -120,11 +121,12 @@ public class UserController {
 	public ListResultModel listUser(@RequestParam int iDisplayLength, @RequestParam int iDisplayStart,@RequestParam String sEcho){
 		ListResultModel listResultModel = new ListResultModel();
 		try{
-			List<User> list = userServiceImpl.getDataByPage(iDisplayLength, iDisplayStart, sEcho);
+			UserPageModel userPageModel = userServiceImpl.getDataByPage(iDisplayLength, iDisplayStart, sEcho);
+			List<User> list = userPageModel.getList();
 			listResultModel.setAaData(list);
 			listResultModel.setsEcho(sEcho);
-			listResultModel.setiTotalRecords(list.size());
-			listResultModel.setiTotalDisplayRecords(iDisplayStart + list.size());
+			listResultModel.setiTotalRecords(userPageModel.getCount());
+			listResultModel.setiTotalDisplayRecords(userPageModel.getCount());
 			listResultModel.setSuccess(true);
 		}
 		catch(Exception e){

@@ -3,6 +3,7 @@ package com.cidic.sdx.services;
 import java.util.List;
 
 import com.cidic.sdx.model.Style;
+import com.cidic.sdx.model.StylePageModel;
 
 public interface StyleService {
 	
@@ -16,5 +17,5 @@ public interface StyleService {
 	
 	public List<Style> listStyleByUser(String userId,int pageNum);
 	
-	public List<Style> getDataByPage(int limit, int offset, String sEcho);
+	public StylePageModel getDataByPage(int limit, int offset, String sEcho);
 }

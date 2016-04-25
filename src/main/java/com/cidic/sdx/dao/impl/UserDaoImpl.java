@@ -93,4 +93,12 @@ public class UserDaoImpl implements UserDao {
 		return resultList;
 	}
 
+	@Override
+	public int getDataCount() {
+		Session session = this.getSessionFactory().getCurrentSession();
+		String hql = "select count(*) from User";  
+		Query query =  session.createQuery(hql);  
+		return ((Number)query.uniqueResult()).intValue();
+	}
+
 }

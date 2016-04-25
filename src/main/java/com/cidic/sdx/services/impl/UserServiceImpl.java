@@ -16,6 +16,7 @@ import com.cidic.sdx.dao.StyleDao;
 import com.cidic.sdx.dao.UserDao;
 import com.cidic.sdx.model.Style;
 import com.cidic.sdx.model.User;
+import com.cidic.sdx.model.UserPageModel;
 import com.cidic.sdx.services.UserService;
 
 @Service
@@ -52,8 +53,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getDataByPage(int limit, int offset, String sEcho) {
-		return userDaoImpl.getDataByPage(limit, offset, sEcho);
+	public UserPageModel getDataByPage(int limit, int offset, String sEcho) {
+		UserPageModel userPageModel = new UserPageModel();
+		List<User> list = userDaoImpl.getDataByPage(limit, offset, sEcho);
+		int count = userDaoImpl.getDataCount();
+		userPageModel.setList(list);
+		userPageModel.setCount(count);
+		return userPageModel;
 	}
 
 	@Override

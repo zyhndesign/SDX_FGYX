@@ -78,4 +78,12 @@ public class StyleDaoImpl implements StyleDao {
 		return list;
 	}
 
+	@Override
+	public int getDataCount() {
+		Session session = this.getSessionFactory().getCurrentSession();
+		String hql = "select count(*) from Style";  
+		Query query =  session.createQuery(hql);  
+		return ((Number)query.uniqueResult()).intValue();
+	}
+
 }
