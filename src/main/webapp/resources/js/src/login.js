@@ -42,7 +42,7 @@ $(document).ready(function(){
             }
         },
         messages: {
-            email: {
+            username: {
                 required:config.validErrors.required,
                 maxlength:config.validErrors.maxLength.replace("${max}",30)
             },
