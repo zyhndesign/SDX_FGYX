@@ -20,21 +20,20 @@ $(document).ready(function(){
     /*$("#captchaRefresh").click(function(){
         $(this).find("img").attr("src","s/captcha.jpg?"+Math.random());
         return false;
-    });
+    });*/
 
     login.initMe([{
-        name:"email",
-        el:$("#email")
+        name:"username",
+        el:$("#username")
     },{
         name:"password",
         el:$("#password")
-    }]);*/
+    }]);
 
     $("#myForm").validate({
         rules: {
-            email: {
+            username: {
                 required:true,
-                email:true,
                 maxlength:30
             },
             password:{
@@ -45,7 +44,6 @@ $(document).ready(function(){
         messages: {
             email: {
                 required:config.validErrors.required,
-                email:config.validErrors.email,
                 maxlength:config.validErrors.maxLength.replace("${max}",30)
             },
             password:{
@@ -55,6 +53,13 @@ $(document).ready(function(){
         },
         submitHandler:function(form){
             form.submit();
+            login.rememberMe([{
+                name:"username",
+                el:$("#username").val()
+            },{
+                name:"password",
+                el:$("#password").val()
+            }]);
         }
     });
 });
