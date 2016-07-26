@@ -27,8 +27,6 @@
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" id="myForm" action="style/insert" method="post">
-
-                    <input type="hidden" name="id" value="1">
                     <div class="form-group">
                         <label class="control-label col-md-2">图片*</label>
                         <div class="col-md-10" id="uploadContainer">
